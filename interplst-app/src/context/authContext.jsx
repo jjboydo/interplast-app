@@ -8,6 +8,7 @@ export const AuthContextProvider = ({ children }) => {
 
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [changes, setChanges] = useState(false)
 
     const login = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password)
@@ -22,5 +23,5 @@ export const AuthContextProvider = ({ children }) => {
         return () => unsubuscribe();
     }, [])
 
-    return <authContext.Provider value={{login, user, loading}} > {children} </authContext.Provider>
+    return <authContext.Provider value={{login, user, loading, changes, setChanges}} > {children} </authContext.Provider>
 }

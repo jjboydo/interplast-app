@@ -9,7 +9,9 @@ export const App = () => {
         <Routes>
           <Route path="/" element={
             <ProtectedRoute>
-              <Home />
+              <div className="bg-secondary bg-gradient-to-b from-accent via-back to-back h-screen">
+                <Home />
+              </div>
             </ProtectedRoute>
           } />
           <Route path="/login" element={<Login />} />

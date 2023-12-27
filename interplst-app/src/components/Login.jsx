@@ -55,7 +55,7 @@ export const Login = () => {
                                 />
                             </div>
                             <div>
-                                <label htmlFor="password" className="block mb-2 text-sm font-medium text-back dark:text-white font-titulo">Password</label>
+                                <label htmlFor="password" className="block mb-2 text-sm font-medium text-back dark:text-white font-titulo">Contraseña</label>
                                 <input
                                     type="password"
                                     name="password"
