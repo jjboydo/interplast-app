@@ -30,7 +30,7 @@ export const Login = () => {
 
         
     return (
-        <section className="bg-[rgb(213,179,98)] bg-gradient-to-tl from-primary via-secondary to-accent ">
+        <section className="bg-[rgb(213,179,98)] bg-gradient-to-tl from-primario via-secondary to-accent">
             {error && <Alert message={error} />}
             <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
 
@@ -68,7 +68,7 @@ export const Login = () => {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full text-texto bg-primary hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                                className="w-full text-texto transition-all ease-in-out bg-primario hover:bg-back focus:ring-4 focus:outline-none focus:ring-accent font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primario dark:hover:bg-back dark:focus:ring-accent"
                             >
                                 Ingresar
                             </button>
