@@ -1,22 +1,29 @@
 import { Accordion } from "keep-react";
-import { RiEdit2Fill } from "react-icons/ri";
+import { RiDeleteBin2Line, RiEdit2Fill } from "react-icons/ri";
 import { ModalComp } from "./ModalComp";
 import { useState } from "react";
+import { ModalDelete } from "./ModalDelete";
 export const AccordionProduct = ({ item }) => {
 
     const [isEditing, setIsEditing] = useState(false)
+    const [isDeleting, setIsDeleting] = useState(false)
 
     const handleProductEdit = () => {
         setIsEditing(!isEditing)
     }
 
+    const handleProductDelete = () => {
+        setIsDeleting(!isDeleting)
+    }
+
     return (
         <>
             <Accordion>
-                <Accordion.Panel className="rounded-sm bg-accent">
+                <Accordion.Panel className="rounded-sm bg-accent shadow-inner">
                     <Accordion.Container className="rounded-sm">
-                        <Accordion.Title className="text-md font-titulo font-bold text-texto">{item.name}</Accordion.Title>
-                        <RiEdit2Fill size={18} onClick={handleProductEdit} />
+                        <Accordion.Title className="text-md font-titulo font-bold text-texto flex-1 break-all">{item.name}</Accordion.Title>
+                        <RiEdit2Fill size={18} className="mx-3" onClick={handleProductEdit} />
+                        <RiDeleteBin2Line size={18} color="red" onClick={handleProductDelete} />
                     </Accordion.Container>
                     <Accordion.Content className="py-3 bg-back">
                         <div className="flex justify-between font-parrafo text-texto">
@@ -37,6 +44,7 @@ export const AccordionProduct = ({ item }) => {
                 </Accordion.Panel>
             </Accordion>
             {isEditing && <ModalComp isEditing={isEditing} setIsEditing={setIsEditing} item={item} />}
+            {isDeleting && <ModalDelete setIsDeleting={setIsDeleting} item={item} />}
         </>
     )
 }

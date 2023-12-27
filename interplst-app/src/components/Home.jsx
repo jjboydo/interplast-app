@@ -12,6 +12,7 @@ export const Home = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [isAdding, setIsAdding] = useState(false)
     const { changes, setChanges } = useContext(authContext)
+    const [search, setSearch] = useState("")
 
     const getProducts = () => {
         const myProducts = query(collection(db, "products"))
@@ -34,6 +35,8 @@ export const Home = () => {
     const handleAddProduct = () => {
         setIsAdding(!isAdding)
     }
+
+    const results = !search ? products : products.filter((product) => product.name.toLowerCase().includes(search.toLowerCase()))
 
     useEffect(() => {
         setIsLoading(true)
@@ -65,9 +68,11 @@ export const Home = () => {
                                             <input
                                                 type="text"
                                                 id="simple-search"
-                                                className="bg-back border border-gray-300 text-texto text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                                                placeholder="Search"
+                                                className="bg-back shadow-md border font-titulo border-gray-300 text-texto text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                                placeholder="Buscar un producto..."
                                                 required
+                                                value={search}
+                                                onChange={(e) => setSearch(e.target.value)}
                                             />
                                         </div>
                                     </form>
@@ -83,7 +88,7 @@ export const Home = () => {
                             </div>
                             <div className="overflow-x-auto px-5 mb-5">
                                 <h4 className="mb-3 font-bold font-titulo text-lg">Productos</h4>
-                                {products.map(product => <AccordionProduct key={product.id} item={{ id: product.id, name: product.name, unitPrice: product.unitPrice, price50: product.price50, price100: product.price100, category: product.category }} />)}
+                                {results.map(product => <AccordionProduct key={product.id} item={{ id: product.id, name: product.name, unitPrice: product.unitPrice, price50: product.price50, price100: product.price100, category: product.category }} />)}
                             </div>
                             {/* <nav className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4" aria-label="Table navigation">
                         <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
