@@ -3,3 +3,6 @@
 @tailwind components;
 @tailwind utilities;
 
+.active {
+    @apply border-b-2 border-[#888888] no-underline font-bold bg-back rounded-t-lg bg-opacity-[0.03] text-[#888888];
+  }
